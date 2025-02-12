@@ -5,11 +5,12 @@ function value() {
 
       if (categoriaId) {
         $.ajax({
-          method: "G'ET",
+          method: "GET",
           url: "/crudArtigoss/get_subcategorias.php",
           data: { id_categoria: categoriaId },
 
           success: function (response) {
+            console.log(response);
             $("#subcategorias").html(response);
           },
         });

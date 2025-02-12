@@ -18,7 +18,7 @@ $result = $conn->query("SELECT image FROM art");
 
     <?php while ($row = $result->fetch_assoc()): ?>
         <div class="container__images">
-            <img src="<?= $row["image"] ?>" alt="">
+            <img style="max-width: 400px; max-height:400px; border-radius: 6px; margin: 10px 0 0 10px;" src="<?= $row["image"] ?>" alt="">
         </div>
     <?php endwhile; ?>
 </body>

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require "./Database/Connection/Connection.php";
 
 $querySelectCategoria = "SELECT * FROM categoria";
@@ -34,7 +36,6 @@ $resultQuerySelectTags = $conn->query($querySelectTags);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
-
 </head>
 <body>
     <?php 
@@ -45,7 +46,15 @@ $resultQuerySelectTags = $conn->query($querySelectTags);
         <h1>Criar Artigo</h1>
         <form  method="POST" action="posts.php" enctype="multipart/form-data">
             <label class="form-label" for="title" >Título:</label><br>
-            <input class="form-control" type="text" name="titulo" id="title" autocomplete="off"><br><br>
+            <input class="form-control" value="<?php  
+            
+            if (isset($_SESSION['info_form'])) {
+                echo $_SESSION['info_form']['titulo'];
+            } else {
+                echo '';
+            }
+
+            ?>" type="text" name="titulo" id="title" autocomplete="off"><br><br>
     
             <label class="form-label" for="content">Conteúdo:</label><br>
             <textarea name="conteudo" id="content"></textarea><br><br>
@@ -80,5 +89,22 @@ $resultQuerySelectTags = $conn->query($querySelectTags);
             <button type="submit" class="btn btn-primary">Criar Postagem</button>
         </form>
     </main>
+
+    <?php if (isset($_SESSION['mensagem'])): ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                Swal.fire({
+                    icon: '<?= $_SESSION['mensagem']['tipo'] ?>', 
+                    title: '<?= ($_SESSION['mensagem']['tipo'] == 'success') ? 'Sucesso!' : 'Erro!' ?>',
+                    text: '<?= $_SESSION['mensagem']['texto'] ?>',
+                    timer: 3000, 
+                    showConfirmButton: true
+                });
+            });
+        </script>
+        <?php unset($_SESSION['mensagem']); ?>
+    <?php endif; ?>
+
 </body>
 </html>
