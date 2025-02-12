@@ -1,0 +1,84 @@
+<!-- <div class="container_subcategorias"> -->
+
+<label class="form-label" for="category">SubCategoria:</label><br>
+
+<select name="id_subcategorias" class="form-select mb-4">
+    <?php 
+    
+    $idSubcat = $rowCat["id_subcategorias"];
+    $query = "SELECT * FROM subcategorias WHERE id_subcategorias = $idSubcat";
+    $result = $conn->query($query);
+    
+    while ($row = $result->fetch_assoc()):
+    ?>
+        <option value="<?= $row["id_subcategorias"]; ?>"><?= $row["subcategorias"]; ?></option>
+    
+    <?php endwhile; ?>
+</select>
+
+<!-- </div> -->
+
+
+
+
+
+function value() {
+    // $.ajax({
+    //     type: "POST",
+    //     url: "/crudArtigoss/criar.php",
+    //     data: { value: 222 }, // Enviando como formulário normal
+    //     dataType: "json", // Espera receber JSON
+    //     success(response) {
+    //         console.log("Resposta do servidor:", response);
+    //     },
+    //     error(jqXHR, textStatus, errorThrown) {
+    //         console.error("Erro na requisição:", textStatus, errorThrown);
+    //         console.log("Resposta do servidor:", jqXHR.responseText);
+    //     },
+    // });
+
+    $(document).ready(function () {
+        $("#categoria").change(function () {
+            var categoriaId = $(this).val(); // Pega o ID da categoria selecionada
+
+            if (categoriaId) {
+                $.ajax({
+                    url: "/crudArtigoss/get_subcategorias.php", // Arquivo PHP que irá processar a consulta
+                    method: "GET",
+                    data: { id_categoria: categoriaId }, // Envia o ID da categoria para o PHP
+                    // dataType: "json",
+
+                    success: function (response) {
+                        console.log(response);
+                        $("#subcategorias").html(response); // Preenche o select de subcategorias
+                    },
+                });
+            } 
+            else {
+                $("#subcategorias").html(
+                    '<option value="">Deu bo</option>'
+                ); // Caso não haja categoria
+            }
+        });
+    });
+}
+export default value;
+// function value() {
+//     const categoriaSelect = $("#categoria");
+
+//     categoriaSelect.on("change", () => {
+//         const categoriaSelectValue = categoriaSelect.val;
+//         const url = "/crudArtigoss/criar.php";
+//         $.ajax({
+//             type: "POST",
+//             url: url,
+//             data: JSON.stringify({oi: 1}),
+//             contentType: "application/json; charset=utf-8",
+//             dataType: "json",
+//             success() {
+//                 console.log("deu certo");
+//             }
+//         });
+//     });
+// }
+// export default value;

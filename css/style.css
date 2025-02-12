@@ -1,0 +1,169 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header.container a {
+  color: #ffffff;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+input {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+header.contain {
+  width: 100vw;
+  height: 80px;
+  background: #000000;
+  color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+header.contain a#home {
+  font-size: 38px;
+}
+header.contain a {
+  color: #ffffff;
+}
+header.contain ul {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}
+header.contain ul a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  opacity: 0.7;
+}
+header.contain ul a:hover {
+  transition: 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.art {
+  border-radius: 20px;
+  border-color: #ccc;
+}
+.art a {
+  font-size: 40px;
+  padding-left: 40px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+.art a:hover {
+  text-decoration: underline;
+}
+.art img {
+  border-radius: 0 20px 20px 0;
+  width: 350px;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.img-fluid {
+  max-width: 80%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.text-muted {
+  font-size: 14px;
+}
+
+body {
+  display: grid;
+  place-content: center;
+}
+
+form {
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+}
+form img#imagePreview {
+  align-self: center;
+  border-radius: 6px;
+  max-width: 400px;
+  margin-top: 1rem;
+  display: none;
+}
+
+/*  
+
+p {
+    margin: 0;
+}
+
+.art {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid #000;
+    max-width: 1000px;
+    width: 100%;
+    margin: 50px auto;
+
+    h1 {
+        text-transform: uppercase;
+    }
+}
+
+.art .left__side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+}
+.art .right__side img {
+    width: 500px;
+}
+
+
+.container__images {
+    max-width: 1440px;
+    width: 100%;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    & img {
+        width: 300px;
+        height: 300px;
+        border-radius: 6px;
+    }
+}
+*//*# sourceMappingURL=style.css.map */

@@ -1,0 +1,40 @@
+header.contain {
+    width: 100vw;
+    height: 80px;
+    background: $black;
+    color: $white;
+
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    & a#home {
+        font-size: 38px;
+    }
+
+    & a {
+        color: $white;
+    }
+
+    & ul {
+        display: flex;
+        gap: 16px;
+
+        list-style: none;
+        & a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 20px;
+            letter-spacing: 1.5px;
+            opacity: 0.7;
+
+            &:hover {
+                transition: 0.5s ease-in-out;
+                opacity: 1;
+            }
+        }
+    }
+}
