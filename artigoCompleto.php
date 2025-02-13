@@ -13,25 +13,23 @@
     <title>Artigo Completo</title>
 </head>
 <body class="bg-light">
-    <?php
-        require "components/header.php";
-    ?>
+    <?php include "components/header.php"; ?>
+
     <div class="container mt-5">
         <?php
-        require "./Database/Connection/Connection.php";
+            require "./Database/Connection/Connection.php";
 
-        if (isset($_GET["id"])):
-            $id = intval($_GET["id"]);
-            $sql = "SELECT * FROM art WHERE id=$id";
-            $result = $conn->query($sql);
-        endif;
+            if (isset($_GET["id"])):
+                $id = intval($_GET["id"]);
+                $sql = "SELECT * FROM art WHERE id=$id";
+                $result = $conn->query($sql);
+            endif;
         ?>
 
         <?php while ($row = $result->fetch_assoc()): ?>
             <div class="card shadow-lg p-4">
                 <!-- Botão de edição -->
                 <div class="text-end mb-4">
-                    
                     <a href="/crudArtigoss/index.php" id="voltar" class="btn btn-info">Voltar</a>
                     <a id="download" href="/crudArtigoss/delete.php?id=<?= $id ?>" class="btn btn-danger">Deletar</a>
                     <a id="editar" href="./editarArtigo.php?id=<?= $row["id"]; ?>" class="btn btn-danger">✏️ Editar</a>

@@ -54,8 +54,9 @@ $subcat = $_POST["id_subcategorrias"];
 $tags = $_POST["tags"];
 $date = date('Y/m/d');
 
-$query = "UPDATE art SET titulo=?, conteudo=?, id_categoria=?, id_tags=?, image=?, dt_criada=? WHERE id=?";
-$stmt = $mysqli->prepare($query);
+
+$queryUpdate = "UPDATE art SET titulo=?, conteudo=?, id_categoria=?, id_tags=?, image=?, dt_criada=? WHERE id=?";
+$stmt = $mysqli->prepare($queryUpdate);
 $stmt->bind_param("ssisssi", $titulo, $conteudo, $categoria, $tags, $imagePathString, $date, $id);
 
 if ($stmt->execute()) {

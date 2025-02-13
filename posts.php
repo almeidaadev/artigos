@@ -60,8 +60,9 @@ if (empty($_POST["titulo"]) || empty($_POST["conteudo"]) || empty($_POST["id_cat
     exit;
 }
 
+$queryInsert = "INSERT INTO art (titulo, conteudo, id_categoria, id_tags, image, dt_criada) VALUES (?, ?, ?, ?, ?, ?)";
 
-$stmt = $mysqli->prepare("INSERT INTO art (titulo, conteudo, id_categoria, id_tags, image, dt_criada) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt = $mysqli->prepare($queryInsert);
 $stmt->bind_param("ssisss", $titulo, $conteudo, $categoria, $tags, $imagePathString, $date);
 
 if ($stmt->execute()) {

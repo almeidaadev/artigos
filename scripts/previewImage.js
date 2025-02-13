@@ -17,6 +17,37 @@ function previewImage() {
     });
 }
 
+export default previewImage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function previewImage() {
 //     const imageInput = document.querySelector(".imageInput");
 
@@ -36,5 +67,3 @@ function previewImage() {
 //         }
 //     });
 // }
-
-export default previewImage;

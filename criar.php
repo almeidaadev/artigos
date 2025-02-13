@@ -60,20 +60,27 @@ $info_form = [
             <textarea name="conteudo"  id="content"></textarea><br><br>
     
             <label class="form-label" value="<?= !empty($info_form['conteudo']) ?  $info_form['conteudo'] : ''?>" for="categoria">Categoria:</label><br>
-            <select name="id_categoria" class="form-select mb-4" id="categoria">
-                <option>Informe uma categoria</option>
-                <?php while ($rowCat = $resultQueryCategoria->fetch_assoc()): ?>
-                    <option value="<?= $rowCat["id_categoria"]; ?>"><?= $rowCat["categorias"]; ?></option>
-                <?php endwhile; ?>
-            </select>
-    
-            <div class="container_subcategorias">
-                <label for="subcategoria" class="form-label mb-4">Subcategoria:</label>
-                <select id="subcategorias" name="id_subcategorias" class="form-select mb-4">
-                    <option>Selecione uma categoria primeiro</option>
-                </select>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <select name="id_categoria" class="form-select mb-4" id="categoria">
+                        <option>Informe uma categoria</option>
+                        <?php while ($rowCat = $resultQueryCategoria->fetch_assoc()): ?>
+                            <option value="<?= $rowCat["id_categoria"]; ?>"><?= $rowCat["categorias"]; ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="container_subcategorias">
+                        <select id="subcategorias" name="id_subcategorias" class="form-select mb-4" disabled>
+                            <option>Selecione uma categoria primeiro</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-    
+
             <label class="form-label" for="tags">Tags:</label><br>
 
             <select name="tags" class="form-select mb-4">
@@ -90,21 +97,7 @@ $info_form = [
         </form>
     </main>
 
-    <?php if (isset($_SESSION['mensagem'])): ?>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                Swal.fire({
-                    icon: '<?= $_SESSION['mensagem']['tipo'] ?>', 
-                    title: '<?= ($_SESSION['mensagem']['tipo'] == 'success') ? 'Sucesso!' : 'Erro!' ?>',
-                    text: '<?= $_SESSION['mensagem']['texto'] ?>',
-                    timer: 3000, 
-                    showConfirmButton: true
-                });
-            });
-        </script>
-        <?php unset($_SESSION['mensagem']); ?>
-    <?php endif; ?>
+    <?php include "menssagem.php" ?>
 
 </body>
 </html>

@@ -46,7 +46,7 @@ if (isset($_GET["id"])) {
 </head>
 <body>
     <?php 
-        require "./components/header.php";
+        include "./components/header.php";
     ?>
 
     <main class="container">
@@ -62,6 +62,7 @@ if (isset($_GET["id"])) {
                 <textarea name="conteudo"  id="content"> <?= $row["conteudo"] ?></textarea><br><br>
         
                 <label class="form-label" for="category">Categoria:</label><br>
+                
                 <!-- <input class="form-control" type="text" name="categoria" id="category"><br><br> -->
                 <select name="id_categoria" class="form-select mb-4" id="categoria">
                     <option>Selecione uma catégoria primeiro</option>

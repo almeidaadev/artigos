@@ -1,6 +1,6 @@
 <?php 
 
-session_start(); // Inicia a sessão
+session_start();
 
 require "./Database/Connection/Connection.php";
 
