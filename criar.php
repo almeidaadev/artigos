@@ -10,6 +10,14 @@ $querySelectTags = "SELECT * FROM tags";
 $resultQueryCategoria = $conn->query($querySelectCategoria);
 $resultQuerySelectTags = $conn->query($querySelectTags);
 
+
+// Informations input session
+
+$info_form = [
+    'titulo' => $_SESSION['info_form']['titulo'],
+    'conteudo' => $_SESSION['info_form']['conteudo'],
+]
+    
 ?>
 
 <!DOCTYPE html>
@@ -46,20 +54,12 @@ $resultQuerySelectTags = $conn->query($querySelectTags);
         <h1>Criar Artigo</h1>
         <form  method="POST" action="posts.php" enctype="multipart/form-data">
             <label class="form-label" for="title" >Título:</label><br>
-            <input class="form-control" value="<?php  
-            
-            if (isset($_SESSION['info_form'])) {
-                echo $_SESSION['info_form']['titulo'];
-            } else {
-                echo '';
-            }
-
-            ?>" type="text" name="titulo" id="title" autocomplete="off"><br><br>
+            <input class="form-control" value="<?= !empty($info_form['titulo']) ?  $info_form['titulo'] : ''?>" type="text" name="titulo" id="title" autocomplete="off"><br><br>
     
             <label class="form-label" for="content">Conteúdo:</label><br>
-            <textarea name="conteudo" id="content"></textarea><br><br>
+            <textarea name="conteudo"  id="content"></textarea><br><br>
     
-            <label class="form-label" for="categoria">Categoria:</label><br>
+            <label class="form-label" value="<?= !empty($info_form['conteudo']) ?  $info_form['conteudo'] : ''?>" for="categoria">Categoria:</label><br>
             <select name="id_categoria" class="form-select mb-4" id="categoria">
                 <option>Informe uma categoria</option>
                 <?php while ($rowCat = $resultQueryCategoria->fetch_assoc()): ?>
