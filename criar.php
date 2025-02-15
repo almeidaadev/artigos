@@ -16,7 +16,7 @@ $resultQuerySelectTags = $conn->query($querySelectTags);
 $info_form = [
     'titulo' => $_SESSION['info_form']['titulo'],
     'conteudo' => $_SESSION['info_form']['conteudo'],
-]
+];
     
 ?>
 
